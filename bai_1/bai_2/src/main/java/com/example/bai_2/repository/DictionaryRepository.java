@@ -7,9 +7,9 @@ import java.util.Map;
 
 @Repository
 public class DictionaryRepository implements IDictionaryRepository {
+    private static Map<String, String> dictionaryMap = new LinkedHashMap<>();
     @Override
-    public Map<String, String> dictionary() {
-        Map<String, String> dictionaryMap = new LinkedHashMap<>();
+    public Map<String, String> getDictionaryMap() {
         dictionaryMap.put("dog", "chó");
         dictionaryMap.put("cat", "mèo");
         dictionaryMap.put("mouse", "chuột");

@@ -14,10 +14,10 @@ public class ChangeMoneyController {
 
     @PostMapping("chuyendoitiente")
     public String greeting(@RequestParam("vnd") double money, Model model) {
-
-        model.addAttribute("result", changeMoneyService.changeMoney(money) +"vnđ");
         if (money<0){
             model.addAttribute("result", "số tiền không đúng định dạng ");
+        }else {
+            model.addAttribute("result", changeMoneyService.changeMoney(money) +"vnđ");
         }
         return "result";
     }

@@ -14,7 +14,7 @@ public class DictionaryService implements IDictionaryService {
     @Override
     public String findDictionary(String tu) {
         String result = null;
-        Map<String, String> dictionaryMap = dictionaryRepository.dictionary();
+        Map<String, String> dictionaryMap = dictionaryRepository.getDictionaryMap();
         for (String key : dictionaryMap.keySet()) {
             if (tu.equals(key)) {
                 result = dictionaryMap.get(key);
