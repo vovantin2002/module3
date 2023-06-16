@@ -9,7 +9,7 @@
 </h1>
 <br/>
 <form action="/dictionary" method="post">
-     nhập từ: <input type="text" name="tu">
+    nhập từ: <input type="text" name="tu">
     <button type="submit">tra cứu</button>
     ${result}
 </form>

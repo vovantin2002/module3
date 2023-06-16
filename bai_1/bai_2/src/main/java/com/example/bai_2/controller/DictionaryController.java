@@ -11,14 +11,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class DictionaryController {
     @GetMapping("")
-    public String search(){
+    public String search() {
         return "index";
     }
+
     @Autowired
     private IDictionaryService dictionaryService;
+
     @PostMapping("/dictionary")
-    public String search(@RequestParam("tu")String tu, Model model){
-        model.addAttribute("result","kết quả là: "+dictionaryService.findDictionary(tu));
+    public String search(@RequestParam("tu") String tu, Model model) {
+        model.addAttribute("result", "kết quả là: " + dictionaryService.findDictionary(tu));
         return "index";
     }
 }

@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="09352b2c-5700-4247-bc2f-5509364d14d3" name="Changes" comment="" />
+    <list default="true" id="a8a13808-b74b-49f1-92a1-59c8d2e557e9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../bai_2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../bai_2/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,6 +20,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Tag Library Descriptor" />
+        <option value="Jsp File" />
         <option value="Interface" />
         <option value="Class" />
       </list>
@@ -36,7 +40,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2REc9Xkyuz1azhd9Xpp2IWwNNMr" />
+  <component name="ProjectId" id="2RE2NbOK8JwAg2RkHjISNLJ7azr" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -47,37 +51,46 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/module_4/module4/bai_1/bai_2/src/main/webapp/WEB-INF",
+    "last_opened_file_path": "D:/module_4/module4/bai_1",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "run.code.analysis.last.selected.profile": "pProject Default"
+    "spring.configuration.checksum": "07971182be5e08c1212939dafed042d6"
   }
 }]]></component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\module_4\module4\bai_1\bai_2\src\main\webapp\WEB-INF" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\module_4\module4\bai_1\bai_2\src\main\webapp\WEB-INF\view" />
+      <recent name="D:\module_4\module4\bai_1\SpringGreeting\src\main\webapp" />
+      <recent name="D:\module_4\module4\bai_1\SpringGreeting\src\main\webapp\WEB-INF" />
+      <recent name="D:\module_4\module4\bai_1\SpringGreeting\src\main\webapp\view" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="Tomcat 9.0.7515" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.7515" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="UPDATING_POLICY" value="hot-swap-classes" />
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.75">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="SpringGreeting" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="SpringGreeting" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tomcat 9.0.75" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.75" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
-        <artifact name="Gradle : com.example : bai_2-1.0-SNAPSHOT.war">
+        <artifact name="Gradle : com.codegym : SpringGreeting-1.0-SNAPSHOT.war">
           <settings>
             <option name="CONTEXT_PATH" value="" />
           </settings>
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="f78eced1-6fc9-4dd5-b4f5-89ef7f330952" />
+        <option name="BASE_DIRECTORY_NAME" value="f775d100-6217-499c-8e70-0bdb8d6ebdbe" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -85,7 +98,7 @@
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="50820" />
+        <option name="DEBUG_PORT" value="65070" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -150,20 +163,110 @@
       <method v="2">
         <option name="Make" enabled="true" />
         <option name="BuildArtifacts" enabled="true">
-          <artifact name="Gradle : com.example : bai_2-1.0-SNAPSHOT.war" />
+          <artifact name="Gradle : com.codegym : SpringGreeting-1.0-SNAPSHOT.war" />
         </option>
       </method>
     </configuration>
+    <configuration name="Tomcat 9.0.7514" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.7514" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="1.8" nameIsGenerated="true">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="Gradle : com.example : SpringGreeting-1.0-SNAPSHOT.war">
+          <settings>
+            <option name="CONTEXT_PATH" value="" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="a8f18658-d5fa-4efb-9f41-84ee0cae8a41" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="63647" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Tomcat Server.Tomcat 9.0.7514" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.75" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="09352b2c-5700-4247-bc2f-5509364d14d3" name="Changes" comment="" />
-      <created>1686818535406</created>
+      <changelist id="a8a13808-b74b-49f1-92a1-59c8d2e557e9" name="Changes" comment="" />
+      <created>1686800883188</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1686818535406</updated>
-      <workItem from="1686818536889" duration="4640000" />
+      <updated>1686800883188</updated>
+      <workItem from="1686800884659" duration="12863000" />
+      <workItem from="1686877540822" duration="50000" />
     </task>
     <servers />
   </component>
