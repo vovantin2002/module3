@@ -1,4 +1,4 @@
-package com.example.bai_2;
+package com.example.bai_2.controller;
 
 import com.example.bai_2.service.ICaculatorService;
 import org.springframework.beans.factory.annotation.Autowired;
