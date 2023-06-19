@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="09352b2c-5700-4247-bc2f-5509364d14d3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../SpringGreeting/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SpringGreeting/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bai_1/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../bai_1/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bai_1/src/main/java/com/example/springgreeting/controller/ChangeMoneyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../bai_1/src/main/java/com/example/springgreeting/controller/ChangeMoneyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bai_2/repository/DictionaryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bai_2/repository/DictionaryRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bai_2/repository/IDictionaryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bai_2/repository/IDictionaryRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bai_2/service/DictionaryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bai_2/service/DictionaryService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +170,8 @@
       <workItem from="1686818536889" duration="4640000" />
       <workItem from="1686877711376" duration="31000" />
       <workItem from="1686885733112" duration="69000" />
-      <workItem from="1686885820196" duration="280000" />
+      <workItem from="1686885820196" duration="660000" />
+      <workItem from="1687146000441" duration="93000" />
     </task>
     <servers />
   </component>
