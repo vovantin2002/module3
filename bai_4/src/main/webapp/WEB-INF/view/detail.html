@@ -5,6 +5,25 @@
     <title>Title</title>
 </head>
 <body>
-
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Tên sản phẩm</th>
+        <th>Giá sản phẩm</th>
+        <th>Mô tả của sản phẩm</th>
+        <th>Nhà sản xuất</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td th:text="${product.id}"></td>
+        <td th:text="${product.name}"></td>
+        <td th:text="${product.price}"></td>
+        <td th:text="${product.description}"></td>
+        <td th:text="${product.producer}"></td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

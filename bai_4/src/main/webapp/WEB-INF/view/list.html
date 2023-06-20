@@ -7,7 +7,12 @@
 </head>
 <body>
 <h1><a th:href="@{/showFormCreate}">Thêm mới sản phẩm</a></h1>
-<input type="text" placeholder="nhập tên sản phẩm"><a href="/product/createion-form">Tìm kiếm</a>
+<p th:if="${msg!=null}" th:text="${msg}"></p>
+<br>
+<form action="/search" method="get">
+    <input type="text" name="name" placeholder="nhập tên sản phẩm">
+    <button type="submit">Tìm kiếm</button>
+</form>
 <table border="1">
     <thead>
     <tr>
@@ -27,9 +32,9 @@
         <td th:text="${product.price}"></td>
         <td th:text="${product.description}"></td>
         <td th:text="${product.producer}"></td>
-        <td><a th:href="@{/productList/{id}(id=${product.id})}">Sửa</a></td>
-        <td><a th:href="@{/productList/{id}(id=${product.id})}">Xóa</a></td>
-        <td><a th:href="@{/productList/{id}(id=${product.id})}">Detail</a></td>
+        <td><a th:href="@{/edit/{id}(id=${product.id})}">Sửa</a></td>
+        <td><a th:href="@{/delete/{id}(id=${product.id})}">Xóa</a></td>
+        <td><a th:href="@{/detail/{id}(id=${product.id})}">Detail</a></td>
     </tr>
     </tbody>
 </table>
