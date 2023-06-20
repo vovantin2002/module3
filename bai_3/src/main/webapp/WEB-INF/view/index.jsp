@@ -44,7 +44,7 @@
         <br>
         <tr>
             <td> Signature:</td>
-            <td><form:input type="text" path="signature"/></td>
+            <td><form:textarea type="text" path="signature"/></td>
         </tr>
         <br>
         <br>
