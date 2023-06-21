@@ -1,37 +1,51 @@
 package com.example.bai_4.repository;
 
 import com.example.bai_4.model.Product;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;
 
 @Repository
 public class ProductRepository implements IProductRepository {
-    private static List<Product> productList = new ArrayList<>();
 
-    //id, tên sản phẩm, giá sản phẩm, mô tả của sản phẩm, nhà sản xuất.
-    static {
-        productList.add(new Product(1, "iphone", 1000, "ok", "vovantin"));
-        productList.add(new Product(2, "dell", 1200, "ok", "vovantin"));
-        productList.add(new Product(3, "lenovo", 1500, "ok", "vovantin"));
-        productList.add(new Product(4, "macbook pro", 2000, "ok", "vovantin"));
-        productList.add(new Product(5, "samsum", 900, "ok", "vovantin"));
-    }
+    private static final String SELECT_ALL_PRODUCTS_QUERY = "FROM Product";
 
     @Override
     public List<Product> display() {
+        List<Product> productList = ConnectionUtils.getEntityManager().createQuery(SELECT_ALL_PRODUCTS_QUERY).getResultList();
         return productList;
     }
 
+
     @Override
     public void create(Product product) {
-        productList.add(product);
+        Session session = null;
+        Transaction transactional = null;
+        try {
+            session = ConnectionUtils.getSessionFactory().openSession();
+            transactional = session.beginTransaction();
+            session.save(product);
+            transactional.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (transactional != null) {
+                transactional.rollback();
+            }
+        } finally {
+            if (session != null) {
+                session.clear();
+            }
+        }
     }
 
     @Override
     public Product showProductUpdate(int id) {
         Product product = null;
+        List<Product> productList = display();
         for (int i = 0; i < productList.size(); i++) {
             if (productList.get(i).getId() == id) {
                 product = productList.get(i);
@@ -44,12 +58,19 @@ public class ProductRepository implements IProductRepository {
     @Override
     public boolean update(Product product) {
         boolean flag = false;
+        List<Product> productList = display();
         for (int i = 0; i < productList.size(); i++) {
             if (productList.get(i).getId() == product.getId()) {
                 productList.set(i, product);
-                flag=true;
+                flag = true;
                 break;
             }
+        }
+        if (flag) {
+            EntityManager entityManager = ConnectionUtils.getEntityManager();
+            entityManager.getTransaction().begin();
+            entityManager.merge(product);
+            entityManager.getTransaction().commit();
         }
         return flag;
     }
@@ -57,12 +78,21 @@ public class ProductRepository implements IProductRepository {
     @Override
     public boolean delete(int id) {
         boolean flag = false;
+        List<Product> productList = display();
+        Product product = null;
         for (int i = 0; i < productList.size(); i++) {
             if (productList.get(i).getId() == id) {
+                product = productList.get(i);
                 productList.remove(i);
-                flag=true;
+                flag = true;
                 break;
             }
+        }
+        if (flag) {
+            EntityManager entityManager = ConnectionUtils.getEntityManager();
+            entityManager.getTransaction().begin();
+            entityManager.remove(product);
+            entityManager.getTransaction().commit();
         }
         return flag;
     }
@@ -70,9 +100,10 @@ public class ProductRepository implements IProductRepository {
     @Override
     public Product detail(int id) {
         Product product = null;
+        List<Product> productList = display();
         for (int i = 0; i < productList.size(); i++) {
             if (productList.get(i).getId() == id) {
-                product = productList.get(i);
+                product = display().get(i);
                 break;
             }
         }
@@ -81,10 +112,11 @@ public class ProductRepository implements IProductRepository {
 
     @Override
     public List<Product> searchProductByName(String name) {
+        List<Product> productList = display();
         List<Product> productList1 = new ArrayList<>();
         for (int i = 0; i < productList.size(); i++) {
-            if (productList.get(i).getName().contains(name)) {
-                productList1.add(productList.get(i));
+            if (display().get(i).getName().contains(name)) {
+                productList1.add(display().get(i));
             }
         }
         return productList1;

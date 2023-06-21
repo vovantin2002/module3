@@ -29,13 +29,13 @@ public class ProductService implements IProductService {
 
     @Override
     public boolean update(Product product) {
-        boolean flag=productRepository.update(product);
+        boolean flag = productRepository.update(product);
         return flag;
     }
 
     @Override
     public boolean delete(int id) {
-        boolean flag=productRepository.delete(id);
+        boolean flag = productRepository.delete(id);
         return flag;
     }
 
