@@ -32,8 +32,13 @@ public class ProductController {
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable int id, RedirectAttributes redirectAttributes) {
-        productService.delete(id);
-        redirectAttributes.addFlashAttribute("msg", "Xóa thành công. ");
+        if (productService.delete(id)){
+            productService.delete(id);
+            redirectAttributes.addFlashAttribute("msg", "Xóa thành công. ");
+        }else {
+            redirectAttributes.addFlashAttribute("msg", "Không tìm thấy id. ");
+        }
+
         return "redirect:/";
     }
 
@@ -41,6 +46,10 @@ public class ProductController {
     public String detail(@PathVariable int id, Model model) {
         Product product = productService.detail(id);
         model.addAttribute("product", product);
+        if (product==null){
+            model.addAttribute("msg", "Không tìm thấy id. ");
+            return "/list";
+        }
         return "/detail";
     }
 
@@ -67,8 +76,13 @@ public class ProductController {
 
     @PostMapping("/edit")
     public String edit(@ModelAttribute Product product, RedirectAttributes redirectAttributes) {
-        productService.update(product);
-        redirectAttributes.addFlashAttribute("msg", "Cập nhật thành công. ");
+        if (productService.update(product)){
+            productService.update(product);
+            redirectAttributes.addFlashAttribute("msg", "Cập nhật thành công. ");
+        }else {
+            redirectAttributes.addFlashAttribute("msg", "Không tìm thấy id. ");
+        }
+
         return "redirect:/";
     }
 }
