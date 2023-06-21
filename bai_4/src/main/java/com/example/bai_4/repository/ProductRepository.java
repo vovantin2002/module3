@@ -5,7 +5,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,10 +66,15 @@ public class ProductRepository implements IProductRepository {
             }
         }
         if (flag) {
-            EntityManager entityManager = ConnectionUtils.getEntityManager();
-            entityManager.getTransaction().begin();
-            entityManager.merge(product);
-            entityManager.getTransaction().commit();
+            Session session = ConnectionUtils.getSessionFactory().openSession();
+            Transaction transactional = session.beginTransaction();
+            session.merge(product);
+            transactional.commit();
+            ConnectionUtils.getEntityManager().clear();
+//            EntityManager entityManager = ConnectionUtils.getEntityManager();
+//            entityManager.getTransaction().begin();
+//            entityManager.merge(product);
+//            entityManager.getTransaction().commit();
         }
         return flag;
     }
@@ -89,10 +93,10 @@ public class ProductRepository implements IProductRepository {
             }
         }
         if (flag) {
-            EntityManager entityManager = ConnectionUtils.getEntityManager();
-            entityManager.getTransaction().begin();
-            entityManager.remove(product);
-            entityManager.getTransaction().commit();
+            Session session = ConnectionUtils.getSessionFactory().openSession();
+            Transaction transactional = session.beginTransaction();
+            session.remove(product);
+            transactional.commit();
         }
         return flag;
     }
