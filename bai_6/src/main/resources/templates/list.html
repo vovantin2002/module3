@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p th:if="${msg!=null}" th:text="${msg}"></p>
+<h1><a th:href="@{/showFormCreate}">Thêm mới blog</a></h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Tiêu đề</th>
+        <th>Nội dung</th>
+        <th>Ngày đăng</th>
+        <th>Tác giả</th>
+        <th>Xóa</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="blogs, iterStats: ${blogList}">
+        <td th:text="${blogs.id}"></td>
+        <td th:text="${blogs.title}"></td>
+        <td th:text="${blogs.content}"></td>
+        <td th:text="${blogs.postingDate}"></td>
+        <td th:text="${blogs.author}"></td>
+        <td><a th:href="@{/delete/{id}(id=${blogs.id})}">xóa</a></td>
+        <td><a th:href="@{/edit/{id}(id=${blogs.id})}">sửa</a></td>
+        <td><a th:href="@{/detail/{id}(id=${blogs.id})}">detail</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

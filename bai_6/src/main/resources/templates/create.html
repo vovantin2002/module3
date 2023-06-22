@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/create" method="post" th:object="${blog}">
+    <br>
+    <br>
+    <!--    Id: <input type="number" th:field="*{id}">-->
+    <br>
+    <br>
+    Tiêu đề: <input type="text" th:field="*{title}">
+    <br>
+    <br>
+    Nội dung: <input type="text" th:field="*{content}">
+    <br>
+    <br>
+    Ngày đăng: <input type="date" th:field="*{postingDate}">
+    <br>
+    <br>
+    Tác giả: <input type="text" th:field="*{author}">
+    <br>
+    <br>
+    <input type="submit">
+</form>
+</body>
+</html>
