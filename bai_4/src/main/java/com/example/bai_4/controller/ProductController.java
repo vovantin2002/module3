@@ -33,7 +33,6 @@ public class ProductController {
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable int id, RedirectAttributes redirectAttributes) {
         if (productService.delete(id)) {
-            productService.delete(id);
             redirectAttributes.addFlashAttribute("msg", "Xóa thành công. ");
         } else {
             redirectAttributes.addFlashAttribute("msg", "Không tìm thấy id. ");
@@ -77,7 +76,6 @@ public class ProductController {
     @PostMapping("/edit")
     public String edit(@ModelAttribute Product product, RedirectAttributes redirectAttributes) {
         if (productService.update(product)) {
-            productService.update(product);
             redirectAttributes.addFlashAttribute("msg", "Cập nhật thành công. ");
         } else {
             redirectAttributes.addFlashAttribute("msg", "Không tìm thấy id. ");
