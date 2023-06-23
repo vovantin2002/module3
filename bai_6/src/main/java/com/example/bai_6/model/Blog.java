@@ -9,7 +9,9 @@ public class Blog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(columnDefinition = "LongText")
     private String title;
+    @Column(columnDefinition = "LongText")
     private String content;
     private String postingDate;
     private String author;

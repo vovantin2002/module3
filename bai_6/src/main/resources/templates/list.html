@@ -19,7 +19,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="blogs, iterStats: ${blogList}">
+    <tr th:each="blogs, iterStats: ${blogList.content}">
         <td th:text="${blogs.id}"></td>
         <td th:text="${blogs.title}"></td>
         <td th:text="${blogs.content}"></td>
@@ -31,5 +31,9 @@
     </tr>
     </tbody>
 </table>
+<div>
+    <a th:if="${blogList.hasPrevious()}"
+       th:href="@{/blog(page=${blogList.number-1})}">Previous</a>
+</div>
 </body>
 </html>
