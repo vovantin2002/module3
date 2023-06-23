@@ -6,7 +6,12 @@
 </head>
 <body>
 <p th:if="${msg!=null}" th:text="${msg}"></p>
-<h1><a th:href="@{/showFormCreate}">Thêm mới blog</a></h1>
+<h1><a th:href="@{/blog/create}">Thêm mới blog</a></h1>
+<form th:action="@{/blog/search}" method="get">
+    <input type="text" name="title" placeholder="nhập tên">
+    <button type="submit">Tìm kiếm</button>
+</form>
+
 <table border="1">
     <thead>
     <tr>
@@ -15,6 +20,7 @@
         <th>Nội dung</th>
         <th>Ngày đăng</th>
         <th>Tác giả</th>
+        <th>Danh mục</th>
         <th>Xóa</th>
     </tr>
     </thead>
@@ -25,15 +31,18 @@
         <td th:text="${blogs.content}"></td>
         <td th:text="${blogs.postingDate}"></td>
         <td th:text="${blogs.author}"></td>
-        <td><a th:href="@{/delete/{id}(id=${blogs.id})}">xóa</a></td>
-        <td><a th:href="@{/edit/{id}(id=${blogs.id})}">sửa</a></td>
-        <td><a th:href="@{/detail/{id}(id=${blogs.id})}">detail</a></td>
+        <td th:text="${blogs.category.name}"></td>
+        <td><a th:href="@{/blog/delete/{id}(id=${blogs.id})}">xóa</a></td>
+        <td><a th:href="@{/blog/edit/{id}(id=${blogs.id})}">sửa</a></td>
+        <td><a th:href="@{/blog/detail/{id}(id=${blogs.id})}">detail</a></td>
     </tr>
     </tbody>
 </table>
 <div>
     <a th:if="${blogList.hasPrevious()}"
-       th:href="@{/blog(page=${blogList.number-1})}">Previous</a>
+       th:href="@{/blog(page=${blogList.number - 1})}">Previous</a>
+    <a th:if="${blogList.hasNext()}"
+       th:href="@{/blog(page=${blogList.number + 1})}">Next</a>
 </div>
 </body>
 </html>

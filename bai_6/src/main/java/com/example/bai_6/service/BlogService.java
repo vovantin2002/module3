@@ -3,10 +3,10 @@ package com.example.bai_6.service;
 import com.example.bai_6.model.Blog;
 import com.example.bai_6.repository.IBlogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.awt.print.Pageable;
-import java.util.List;
 
 @Service
 public class BlogService implements IBlogService {
@@ -14,7 +14,7 @@ public class BlogService implements IBlogService {
     private IBlogRepository blogRepository;
 
     @Override
-    public List<Blog> display(Pageable pageable) {
+    public Page<Blog> display(Pageable pageable) {
         return blogRepository.findAll(pageable);
     }
 
@@ -39,4 +39,11 @@ public class BlogService implements IBlogService {
     public Blog showBlogUpdate(int id) {
         return blogRepository.findById(id).get();
     }
+
+    @Override
+    public Page<Blog> findAllByTitle(Pageable pageable, String title) {
+        return blogRepository.findAllByTitle(pageable, title);
+    }
+
+
 }

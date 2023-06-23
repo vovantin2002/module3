@@ -14,6 +14,7 @@
         <th>Nội dung</th>
         <th>Ngày đăng</th>
         <th>Tác giả</th>
+        <th>Danh mục</th>
     </tr>
     </thead>
     <tbody>
@@ -23,6 +24,7 @@
         <td th:text="${blog.content}"></td>
         <td th:text="${blog.postingDate}"></td>
         <td th:text="${blog.author}"></td>
+        <td th:text="${blog.category.name}"></td>
     </tr>
     </tbody>
 </table>

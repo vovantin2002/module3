@@ -2,38 +2,48 @@ package com.example.bai_6.controller;
 
 import com.example.bai_6.model.Blog;
 import com.example.bai_6.service.IBlogService;
+import com.example.bai_6.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.awt.print.Pageable;
 
 @Controller
+@RequestMapping("/blog")
 public class BlogController {
     @Autowired
     private IBlogService blogService;
 
+    @Autowired
+    private ICategoryService categoryService;
+
     @GetMapping("")
-    public String display(@PageableDefault(size = 4,sort = "postingDate") Pageable pageable, Model model) {
+    public String display(@PageableDefault(size = 2, sort = "postingDate") Pageable pageable, Model model) {
         model.addAttribute("blogList", blogService.display(pageable));
         return "list";
     }
 
-    @GetMapping("/showFormCreate")
+    @GetMapping("/search")
+    public String search(@PageableDefault(size = 2) Pageable pageable, @RequestParam(value = "title", defaultValue = "") String title, Model model) {
+        model.addAttribute("blogList", blogService.findAllByTitle(pageable, title));
+        return "list";
+    }
+
+    @GetMapping("/create")
     public String showFormCreate(Model model) {
         model.addAttribute("blog", new Blog());
+        model.addAttribute("categorys", categoryService.getCategory());
         return "create";
     }
 
     @GetMapping("/edit/{id}")
     public String showFormEdit(@PathVariable int id, Model model) {
         model.addAttribute("blog", blogService.showBlogUpdate(id));
+        model.addAttribute("categorys", categoryService.getCategory());
         return "edit";
     }
 
@@ -50,7 +60,7 @@ public class BlogController {
         } else {
             redirectAttributes.addFlashAttribute("msg", "Không tìm thấy id. ");
         }
-        return "redirect:/";
+        return "redirect:/blog";
     }
 
     @PostMapping("/edit")
@@ -60,13 +70,13 @@ public class BlogController {
         } else {
             redirectAttributes.addFlashAttribute("msg", "Không tìm thấy id. ");
         }
-        return "redirect:/";
+        return "redirect:/blog";
     }
 
     @PostMapping("/create")
     public String create(@ModelAttribute Blog blog, RedirectAttributes redirectAttributes) {
         blogService.create(blog);
         redirectAttributes.addFlashAttribute("msg", "Thêm mới thành công. ");
-        return "redirect:/";
+        return "redirect:/blog";
     }
 }

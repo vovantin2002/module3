@@ -15,16 +15,20 @@ public class Blog {
     private String content;
     private String postingDate;
     private String author;
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    private Category category;
 
     public Blog() {
     }
 
-    public Blog(int id, String title, String content, String postingDate, String author) {
+    public Blog(int id, String title, String content, String postingDate, String author, Category category) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.postingDate = postingDate;
         this.author = author;
+        this.category = category;
     }
 
     public int getId() {
@@ -65,5 +69,13 @@ public class Blog {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

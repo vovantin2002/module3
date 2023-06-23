@@ -24,6 +24,14 @@
     Tác giả: <input type="text" th:field="*{author}">
     <br>
     <br>
+    Danh mục:
+    <select id="category" th:field="*{category}">
+        <option th:each="category, statOBj: ${categorys}"
+                th:text="${category.name}" th:value="${category.id}">
+        </option>
+    </select>
+    <br>
+    <br>
     <input type="submit">
 </form>
 </body>
