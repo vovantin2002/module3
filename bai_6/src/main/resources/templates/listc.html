@@ -1,10 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<h1><a th:href="@{/blog/createc}">Thêm mới category</a></h1>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="type, stat: ${category}">
+            <th th:text="${type.id}"></th>
+            <th th:text="${type.name}"></th>
+            <th>
+                <a th:href="@{/blog/deletec/{id}(id=${type.id})}">xóa</a>
+            </th>
+            <th>
+                <a th:href="@{/blog/editc/{id}(id=${type.id})}">Edit</a>
+            </th>
+        </tr>
+        </tbody>
+    </table>
 </body>
 </html>
