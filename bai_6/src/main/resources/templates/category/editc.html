@@ -6,7 +6,7 @@
     <title>Title</title>
 </head>
 <body>
-<form th:action="@{/editc}" method="post" th:object="${category}">
+<form th:action="@{/category/editc}" method="post" th:object="${category}">
     <input type="hidden" th:field="*{id}">
     name:
     <input type="text" th:field="*{name}"><br>

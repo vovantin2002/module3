@@ -6,7 +6,8 @@
     <title>Title</title>
 </head>
 <body>
-<h1><a th:href="@{/blog/createc}">Thêm mới category</a></h1>
+<p th:if="${msg!=null}" th:text="${msg}"></p>
+<h1><a th:href="@{/category/createc}">Thêm mới category</a></h1>
     <table border="1">
         <thead>
         <tr>
@@ -20,10 +21,10 @@
             <th th:text="${type.id}"></th>
             <th th:text="${type.name}"></th>
             <th>
-                <a th:href="@{/blog/deletec/{id}(id=${type.id})}">xóa</a>
+                <a th:href="@{/category/deletec/{id}(id=${type.id})}">xóa</a>
             </th>
             <th>
-                <a th:href="@{/blog/editc/{id}(id=${type.id})}">Edit</a>
+                <a th:href="@{/category/editc/{id}(id=${type.id})}">Edit</a>
             </th>
         </tr>
         </tbody>

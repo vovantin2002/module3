@@ -1,7 +1,6 @@
 package com.example.bai_6.controller;
 
 import com.example.bai_6.model.Blog;
-import com.example.bai_6.model.Category;
 import com.example.bai_6.service.IBlogService;
 import com.example.bai_6.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,16 +39,7 @@ public class BlogController {
         model.addAttribute("categorys", categoryService.getCategory());
         return "create";
     }
-    @GetMapping("/createc")
-    public String showFormCreatec(Model model) {
-        model.addAttribute("category", new Category());
-        return "createc";
-    }
-    @GetMapping("/listc")
-    public String displayCategory(Model model) {
-        model.addAttribute("category", categoryService.getCategory());
-        return "listc";
-    }
+
 
     @GetMapping("/edit/{id}")
     public String showFormEdit(@PathVariable int id, Model model) {
@@ -57,11 +47,7 @@ public class BlogController {
         model.addAttribute("categorys", categoryService.getCategory());
         return "edit";
     }
-    @GetMapping("/editc/{id}")
-    public String showFormEditc(@PathVariable int id, Model model) {
-        model.addAttribute("category", categoryService.showFormEdit(id));
-        return "editc";
-    }
+
 
     @GetMapping("/detail/{id}")
     public String showFormDetail(@PathVariable int id, Model model) {
@@ -78,15 +64,7 @@ public class BlogController {
         }
         return "redirect:/blog";
     }
-    @GetMapping("/deletec/{id}")
-    public String deletec(@PathVariable int id, RedirectAttributes redirectAttributes) {
-        if (categoryService.delete(id)) {
-            redirectAttributes.addFlashAttribute("msg", "Xóa thành công. ");
-        } else {
-            redirectAttributes.addFlashAttribute("msg", "Không tìm thấy id. ");
-        }
-        return "redirect:/listc";
-    }
+
 
     @PostMapping("/edit")
     public String edit(@ModelAttribute Blog blog, RedirectAttributes redirectAttributes) {
@@ -97,15 +75,7 @@ public class BlogController {
         }
         return "redirect:/blog";
     }
-    @PostMapping("/editc")
-    public String editc(@ModelAttribute Category category, RedirectAttributes redirectAttributes) {
-        if (categoryService.edit(category)) {
-            redirectAttributes.addFlashAttribute("msg", "Sửa thành công. ");
-        } else {
-            redirectAttributes.addFlashAttribute("msg", "Không tìm thấy id. ");
-        }
-        return "redirect:/blog";
-    }
+
 
     @PostMapping("/create")
     public String create(@ModelAttribute Blog blog, RedirectAttributes redirectAttributes) {
@@ -113,10 +83,5 @@ public class BlogController {
         redirectAttributes.addFlashAttribute("msg", "Thêm mới thành công. ");
         return "redirect:/blog";
     }
-    @PostMapping("/createc")
-    public String createc(@ModelAttribute Category category, RedirectAttributes redirectAttributes) {
-        categoryService.create(category);
-        redirectAttributes.addFlashAttribute("msg", "Thêm mới thành công. ");
-        return "redirect:/listc";
-    }
+
 }

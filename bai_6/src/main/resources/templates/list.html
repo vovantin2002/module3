@@ -7,7 +7,7 @@
 <body>
 <p th:if="${msg!=null}" th:text="${msg}"></p>
 <h1><a th:href="@{/blog/create}">Thêm mới blog</a>
-    <a th:href="@{/blog/listc}">Quản lý danh mục</a>
+    <a th:href="@{/category}">Quản lý danh mục</a>
 </h1>
 <form th:action="@{/blog/search}" method="get">
     <input type="text" name="title" placeholder="nhập tên">
