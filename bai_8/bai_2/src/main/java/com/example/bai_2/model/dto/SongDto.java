@@ -8,20 +8,44 @@ import javax.validation.constraints.Pattern;
 
 
 public class SongDto implements Validator {
+    private int id;
     @NotBlank(message = "Không được phép để trống, không vượt quá 800 ký tự, không chứa các kí tự đặc biệt như @ ; , . = - + , ….")
     @Pattern(regexp = "^[\\w\\s]{1,800}$")
     private String name;
     @NotBlank(message = "Không được phép để trống, không vượt quá 800 ký tự, không chứa các kí tự đặc biệt như @ ; , . = - + , ….")
-    @Pattern(regexp = "^[\\w\\s]{1,800}$")
+    @Pattern(regexp = "^[\\w\\s]{1,300}$")
     private String artist;
-    @NotBlank(message = "Không được phép để trống, không vượt quá 1000 ký tự, không chứa các kí tự đặc biệt như @ ; . = - + , ….")
-    @Pattern(regexp = "^[\\w\\s ,]{1,1000}$")
+    @NotBlank
+    @Pattern(regexp = "^[\\w\\s ,]{1,1000}$",
+            message = "Không được phép để trống, không vượt quá 1000 ký tự, không chứa các kí tự đặc biệt như @ ; . = - + , ….")
     private String category;
+    private Boolean flagDelete;
 
-    public SongDto(String name, String artist, String category) {
+    public SongDto() {
+    }
+
+    public SongDto(int id, String name, String artist, String category, Boolean flagDelete) {
+        this.id = id;
         this.name = name;
         this.artist = artist;
         this.category = category;
+        this.flagDelete = flagDelete;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Boolean getFlagDelete() {
+        return flagDelete;
+    }
+
+    public void setFlagDelete(Boolean flagDelete) {
+        this.flagDelete = flagDelete;
     }
 
     public String getName() {

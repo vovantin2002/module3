@@ -6,10 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
-public class SongService implements ISongService{
+public class SongService implements ISongService {
     @Autowired
     private ISongRepository songRepository;
+
     @Override
     public List<Song> display() {
         return songRepository.findAll();
@@ -31,7 +33,14 @@ public class SongService implements ISongService{
     }
 
     @Override
-    public void delete(int id) {
-        songRepository.deleteById(id);
+    public boolean delete(int id) {
+        boolean flag = false;
+        for (int i = 0; i < songRepository.findAll().size(); i++) {
+            if (songRepository.findAll().get(i).getId() == id) {
+                songRepository.deleteById(id);
+                flag = true;
+            }
+        }
+        return flag;
     }
 }

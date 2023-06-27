@@ -8,9 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.validation.Valid;
 
 @Controller
 public class SongController {
@@ -22,21 +23,26 @@ public class SongController {
         model.addAttribute("songs", songService.display());
         return "list";
     }
+
     @GetMapping("/edit/{id}")
     public String showFormEdit(@PathVariable int id, Model model) {
         if (this.songService.showFormEdit(id) != null) {
-            model.addAttribute("appSong", songService.showFormEdit(id));
+            model.addAttribute("song", songService.showFormEdit(id));
             return "edit";
         } else {
             model.addAttribute("msg", "Không tìm thấy id này");
             return "/list";
         }
     }
+
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable int id, RedirectAttributes redirectAttributes) {
-        songService.delete(id);
-        redirectAttributes.addFlashAttribute("msg","Xóa thành công");
-        return "edit";
+        if (songService.delete(id)){
+            redirectAttributes.addFlashAttribute("msg", "Xóa thành công");
+        }else {
+            redirectAttributes.addAttribute("msg", "Không tìm thấy id này");
+        }
+        return "redirect:/";
     }
 
     @GetMapping("/create")
@@ -44,9 +50,12 @@ public class SongController {
         model.addAttribute("song", new Song());
         return "create";
     }
+
     @PostMapping("/edit")
-    public String edit(@Validated @ModelAttribute SongDto songDto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+    public String edit(@Valid @ModelAttribute SongDto songDto, BindingResult bindingResult,Model model, RedirectAttributes redirectAttributes) {
+//        new SongDto().validate(songDto,bindingResult);
         if (bindingResult.hasErrors()) {
+            model.addAttribute("song",songDto);
             return "edit";
         }
         Song song = new Song();
@@ -55,15 +64,16 @@ public class SongController {
         redirectAttributes.addFlashAttribute("msg", "Sửa thành công");
         return "redirect:/";
     }
+
     @PostMapping("/create")
-    public String create(@Validated @ModelAttribute SongDto songDto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+    public String create(@Valid @ModelAttribute SongDto songDto, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
+            model.addAttribute("song", songDto);
             return "create";
         }
         Song song = new Song();
         BeanUtils.copyProperties(songDto, song);
-        this.songService.create(song);
-        redirectAttributes.addFlashAttribute("msg", "Thêm mới thành công");
+        songService.create(song);
         return "redirect:/";
     }
 }
