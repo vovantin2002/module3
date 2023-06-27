@@ -49,7 +49,7 @@ public class SongController {
 
     @GetMapping("/create")
     public String showFormCreate(Model model) {
-        model.addAttribute("song", new Song());
+        model.addAttribute("song", new SongDto());
         return "create";
     }
 

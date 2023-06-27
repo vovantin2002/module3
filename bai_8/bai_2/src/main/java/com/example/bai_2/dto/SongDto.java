@@ -9,15 +9,15 @@ import javax.validation.constraints.Pattern;
 
 public class SongDto implements Validator {
     private int id;
-    @NotBlank(message = "Không được phép để trống, không vượt quá 800 ký tự, không chứa các kí tự đặc biệt như @ ; , . = - + , ….")
-    @Pattern(regexp = "^[\\w\\s]{1,800}$")
+    @NotBlank(message = "Không được phép để trống")
+    @Pattern(regexp = "^[\\w\\s]{1,800}$",message = " không vượt quá 800 ký tự, không chứa các kí tự đặc biệt như @ ; , . = - + , ….")
     private String name;
-    @NotBlank(message = "Không được phép để trống, không vượt quá 800 ký tự, không chứa các kí tự đặc biệt như @ ; , . = - + , ….")
-    @Pattern(regexp = "^[\\w\\s]{1,300}$")
+    @NotBlank(message = "Không được phép để trống")
+    @Pattern(regexp = "^[\\w\\s]{1,300}$",message = " không vượt quá 800 ký tự, không chứa các kí tự đặc biệt như @ ; , . = - + , ….")
     private String artist;
-    @NotBlank
+    @NotBlank(message = "Không được phép để trống")
     @Pattern(regexp = "^[\\w\\s ,]{1,1000}$",
-            message = "Không được phép để trống, không vượt quá 1000 ký tự, không chứa các kí tự đặc biệt như @ ; . = - + , ….")
+            message = "không chứa các kí tự đặc biệt như @ ; . = - + , ….")
     private String category;
     private boolean flagDelete;
 
