@@ -1,4 +1,4 @@
-package com.example.bai_2.model.dto;
+package com.example.bai_2.dto;
 
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
@@ -19,12 +19,12 @@ public class SongDto implements Validator {
     @Pattern(regexp = "^[\\w\\s ,]{1,1000}$",
             message = "Không được phép để trống, không vượt quá 1000 ký tự, không chứa các kí tự đặc biệt như @ ; . = - + , ….")
     private String category;
-    private Boolean flagDelete;
+    private boolean flagDelete;
 
     public SongDto() {
     }
 
-    public SongDto(int id, String name, String artist, String category, Boolean flagDelete) {
+    public SongDto(int id, String name, String artist, String category, boolean flagDelete) {
         this.id = id;
         this.name = name;
         this.artist = artist;
@@ -38,14 +38,6 @@ public class SongDto implements Validator {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public Boolean getFlagDelete() {
-        return flagDelete;
-    }
-
-    public void setFlagDelete(Boolean flagDelete) {
-        this.flagDelete = flagDelete;
     }
 
     public String getName() {
@@ -70,6 +62,14 @@ public class SongDto implements Validator {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public boolean isFlagDelete() {
+        return flagDelete;
+    }
+
+    public void setFlagDelete(boolean flagDelete) {
+        this.flagDelete = flagDelete;
     }
 
     @Override

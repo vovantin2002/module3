@@ -1,7 +1,7 @@
 package com.example.bai_2.controller;
 
 import com.example.bai_2.model.Song;
-import com.example.bai_2.model.dto.SongDto;
+import com.example.bai_2.dto.SongDto;
 import com.example.bai_2.service.ISongService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,9 @@ public class SongController {
     @GetMapping("/edit/{id}")
     public String showFormEdit(@PathVariable int id, Model model) {
         if (this.songService.showFormEdit(id) != null) {
-            model.addAttribute("song", songService.showFormEdit(id));
+            SongDto songDto=new SongDto();
+            BeanUtils.copyProperties(songService.showFormEdit(id),songDto);
+            model.addAttribute("song", songDto);
             return "edit";
         } else {
             model.addAttribute("msg", "Không tìm thấy id này");
@@ -53,7 +55,7 @@ public class SongController {
 
     @PostMapping("/edit")
     public String edit(@Valid @ModelAttribute SongDto songDto, BindingResult bindingResult,Model model, RedirectAttributes redirectAttributes) {
-//        new SongDto().validate(songDto,bindingResult);
+        new SongDto().validate(songDto,bindingResult);
         if (bindingResult.hasErrors()) {
             model.addAttribute("song",songDto);
             return "edit";

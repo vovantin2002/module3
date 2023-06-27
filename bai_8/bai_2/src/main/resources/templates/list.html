@@ -20,7 +20,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="song, iterStats: ${songs}">
+    <tr th:each="song, iterStats: ${songs}" th:if="${!song.flagDelete}">
         <td th:text="${song.id}"></td>
         <td th:text="${song.name}"></td>
         <td th:text="${song.artist}"></td>

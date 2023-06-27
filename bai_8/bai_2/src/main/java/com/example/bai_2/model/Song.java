@@ -19,13 +19,13 @@ public class Song {
     @NotBlank(message = "Không được phép để trống, không vượt quá 1000 ký tự, không chứa các kí tự đặc biệt như @ ; . = - + , ….")
     @Pattern(regexp = "^[\\w\\s ,]{1,1000}$")
     private String category;
-    private Boolean flagDelete;
+    private boolean flagDelete;
 
     public Song() {
 
     }
 
-    public Song(int id, String name, String artist, String category, Boolean flagDelete) {
+    public Song(int id, String name, String artist, String category, boolean flagDelete) {
         this.id = id;
         this.name = name;
         this.artist = artist;
@@ -65,11 +65,11 @@ public class Song {
         this.category = category;
     }
 
-    public Boolean getFlagDelete() {
+    public boolean isFlagDelete() {
         return flagDelete;
     }
 
-    public void setFlagDelete(Boolean flagDelete) {
+    public void setFlagDelete(boolean flagDelete) {
         this.flagDelete = flagDelete;
     }
 }

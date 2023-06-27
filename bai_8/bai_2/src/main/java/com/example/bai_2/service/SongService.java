@@ -1,6 +1,6 @@
 package com.example.bai_2.service;
 
-import com.example.bai_2.ISongRepository;
+import com.example.bai_2.repository.ISongRepository;
 import com.example.bai_2.model.Song;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,7 +37,7 @@ public class SongService implements ISongService {
         boolean flag = false;
         for (int i = 0; i < songRepository.findAll().size(); i++) {
             if (songRepository.findAll().get(i).getId() == id) {
-                songRepository.deleteById(id);
+                songRepository.isDelete(id);
                 flag = true;
             }
         }
