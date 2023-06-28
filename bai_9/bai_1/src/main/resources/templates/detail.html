@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<table>
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Author</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="book : ${books}">
+        <td th:text="${book.id}"></td>
+        <td th:text="${book.title}"></td>
+        <td th:text="${book.quantity}"></td>
+        <td th:text="${book.author}"></td>
+        <a th:href="@{/borrow_book/__${book.id}__}">muon sach</a>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
