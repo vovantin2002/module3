@@ -7,14 +7,14 @@ import com.example.bai_6.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 
 @RestController
+@CrossOrigin("*")
 public class RestBlogController {
     @Autowired
     private IBlogService blogService;
@@ -24,6 +24,17 @@ public class RestBlogController {
     @GetMapping()
     public ResponseEntity<List<Blog>> display() {
         return new ResponseEntity<>(blogService.displayList(), HttpStatus.OK) ;
+    }
+    @PostMapping("/search/{id}")
+    public ResponseEntity<List<Blog>> searchArticles(@PathVariable int id, Model model ) {
+        List<Blog> blogList = null;
+        try{
+            blogList = blogService.findBlogByCategoryId(id);
+            model.addAttribute("blogList", blogList);
+        }catch (Exception e){
+            System.out.println("id khong ton tai");
+        }
+        return new ResponseEntity<>(blogList,HttpStatus.OK);
     }
 
     @GetMapping("/category")

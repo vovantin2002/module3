@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+<form action="/search" method="post" class="search-form">
+    <input type="number" name="search" placeholder="Tìm kiếm...">
+    <button onclick="searchBlogById()" type="button">Tìm kiếm</button>
+</form>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Tiêu đề</th>
+        <th>Nội dung</th>
+        <th>Ngày đăng</th>
+        <th>Tác giả</th>
+        <th>Danh mục</th>
+    </tr>
+    </thead>
+    <tbody id="listBlog"></tbody>
+</table>
+<hr/>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    let count = 0;
+    let limit = 20;
+
+    function getListUsers() {
+        $.ajax({
+            url: 'http://localhost:8080/',
+            type: 'GET',
+            data: {
+                _start: count,
+                _limit: limit
+            },
+            success: function (data) {
+                let blogStr = '';
+
+                for (let blog of data.slice(count, count + limit)) {
+                    blogStr += `
+                    <tr>
+                        <td>${blog.id}</td>
+                        <td>${blog.title}</td>
+                        <td>${blog.content}</td>
+                        <td>${blog.postingDate}</td>
+                        <td>${blog.author}</td>
+                        <td>${blog.category.name}</td>
+                    </tr>
+                `;
+                }
+                if (count >= data.length) {
+                    "#load-more-btn".style.display = 'none';
+                }
+
+
+                $("#listBlog").append(blogStr);
+                count += limit;
+            },
+            error: function (error) {
+                // TODO
+            }
+
+        });
+    }
+
+    $("#load-more-btn").on("click", function () {
+        getListUsers();
+    })
+
+    function searchBlogById() {
+        var id = +$('input[name="search"]').val();
+        $.ajax({
+            url: 'http://localhost:8080/search/' + id,
+            type: 'POST',
+            success: function (data) {
+                let blogsStr = "";
+                for (let blog of data) {
+                    blogsStr += `
+              <tr>
+                        <td>${blog.id}</td>
+                        <td>${blog.title}</td>
+                        <td>${blog.content}</td>
+                        <td>${blog.postingDate}</td>
+                        <td>${blog.author}</td>
+                        <td>${blog.category.name}</td>
+                    </tr>
+              `;
+                }
+                $("#listBlog").html(blogsStr);
+            },
+            error: function (error) {
+                // TODO
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        getListUsers();
+    })
+</script>
+<div>
+    <button type="button" id="load-more-btn">Tải thêm</button>
+</div>
+</body>
+</html>

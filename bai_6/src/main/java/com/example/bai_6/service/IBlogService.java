@@ -21,5 +21,4 @@ public interface IBlogService {
     Blog showBlogUpdate(int id);
 
     Page<Blog> findAllByTitle(Pageable pageable, String title);
-
 }
