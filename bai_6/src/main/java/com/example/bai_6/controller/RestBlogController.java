@@ -5,10 +5,10 @@ import com.example.bai_6.model.Category;
 import com.example.bai_6.service.IBlogService;
 import com.example.bai_6.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -22,28 +22,34 @@ public class RestBlogController {
     private ICategoryService categoryService;
 
     @GetMapping()
-    public List<Blog> display() {
-        return this.blogService.displayList();
+    public ResponseEntity<List<Blog>> display() {
+        return new ResponseEntity<>(blogService.displayList(), HttpStatus.OK) ;
     }
 
     @GetMapping("/category")
-    public List<Category> displayCategory() {
-        return this.categoryService.getCategory();
+    public ResponseEntity<List<Category>> displayCategory() {
+        return new ResponseEntity<>(categoryService.getCategory(),HttpStatus.OK);
     }
 
-    @GetMapping("/detail/{id}")
-    public Blog showFormDetail(@PathVariable int id) {
-        if (blogService.showBlogUpdate(id) == null) {
-            throw new RuntimeException("id khong ton tai");
+    @GetMapping("{id}")
+    public ResponseEntity<Blog> showFormDetail(@PathVariable int id) {
+        Blog blog = null;
+        try{
+            blog=blogService.showBlogUpdate(id);
+        }catch (RuntimeException runtimeException){
+            System.out.println("id khong ton tai");
         }
-        return blogService.showBlogUpdate(id);
+        return new ResponseEntity<>(blog,HttpStatus.OK);
     }
 
     @GetMapping("/search/{id}")
-    public List<Blog> getPostsByCategoryId(@PathVariable int id) {
-        if (blogService.findBlogByCategoryId(id) == null) {
-            throw new RuntimeException("id khong ton tai");
+    public ResponseEntity<List<Blog>> getPostsByCategoryId(@PathVariable int id) {
+        List<Blog> blogList = null;
+        try{
+           blogList = blogService.findBlogByCategoryId(id);
+        }catch (RuntimeException runtimeException){
+            System.out.println("id khong ton tai");
         }
-        return blogService.findBlogByCategoryId(id);
+        return new ResponseEntity<>(blogList,HttpStatus.OK);
     }
 }
